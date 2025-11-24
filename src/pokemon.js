@@ -1,52 +1,53 @@
 class Pokemon {
-    static allPokemon = [];
+  static allPokemon = [];
 
-    #health = 100;
-    #level = 1;
+  #health = 100;
 
-constructor(name, type){
-    this.name = name
-    this.type = type
-    Pokemon.allPokemon.push(this)
+  #level = 1;
+
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+    Pokemon.allPokemon.push(this);
+  }
+
+  getHealth() {
+    return this.#health;
+  }
+
+  getLevel() {
+    return this.#level;
+  }
+
+  levelUp() {
+    this.#level += 1;
+    this.#health += 10;
+    console.log(`${this.name} leveled up to level ${this.#level}!`);
+  }
+
+  isFainted() {
+    if (this.#health <= 0) {
+      return true;
     }
-    getHealth(){
-        return this.#health;
-    }
-    getLevel(){
-        return this.#level;
-    }
-    levelUp(){
-         this.#level += 1
-        this.#health += 10
-       console.log(`${this.name} leveled up to level ${this.#level}!`)
-    }
-    isFainted(){
-        if (this.#health <= 0){
-            return true
-        } else {
-            false
-        }
-    }
-    attack(targetPokemon){
-        this.#health -= 10
-        console.log(`${this.name} attacked ${target.name}!`)
-    }
-    static getTotalPokemon(){
-        return Pokemon.allPokemon.length;
-    }
-    static findByName(name){
-        return Pokemon.allPokemon.find((p) => p.name === name)
-    } 
+    false;
+  }
+
+  static getTotalPokemon() {
+    return Pokemon.allPokemon.length;
+  }
+
+  static findByName(name) {
+    return Pokemon.allPokemon.find((p) => p.name === name);
+  }
 }
-
 
 // TEST YOUR CODE HERE
 
 // DO NOT REMOVE
 module.exports = { Pokemon };
 
-const charizard = new Pokemon("Charizard", "Fire");
-const squirtle = new Pokemon("Squirtle", "Water");
+const charizard = new Pokemon('Charizard', 'Fire');
+const squirtle = new Pokemon('Squirtle', 'Water');
 // 1. Checking instance properties
 console.log(charizard); // Pokemon { name: "Charizard", type: "Fire" }
 console.log(squirtle); // Pokemon { name: "Squirtle", type: "Water" }
@@ -59,10 +60,10 @@ console.log(squirtle.getLevel()); // 2
 // OR if you use the get syntax
 console.log(squirtle.level); // 2
 // 4. Checking on health
-console.log(squirtle.getHealth());   // Should be 100
+console.log(squirtle.getHealth()); // Should be 100
 // OR if you use the get syntax
-console.log(squirtle.health);   // Should be 100
+console.log(squirtle.health); // Should be 100
 // 6. Finding a Pokemon instance
-console.log(Pokemon.findByName("Charizard")); // Pokemon { name: "Charizard", type: "Fire" }
-//7. Viewing count of all Pokemon
-console.log("Total Pokemon:", Pokemon.getTotalPokemon()); // 2
+console.log(Pokemon.findByName('Charizard')); // Pokemon { name: "Charizard", type: "Fire" }
+// 7. Viewing count of all Pokemon
+console.log('Total Pokemon:', Pokemon.getTotalPokemon()); // 2
